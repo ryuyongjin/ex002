@@ -46,7 +46,7 @@
 <script>
     var result = '${msg}';
     if(result == 'success'){
-    	alert("처리가 완료되었습니다.111");
+    	alert("처리가 완료되었습니다.22222");
     }
     
     </script>
