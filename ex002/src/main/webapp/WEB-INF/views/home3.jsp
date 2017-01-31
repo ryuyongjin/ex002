@@ -1,28 +1,23 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-  pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head lean="en">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<scrpit src="https://cdnjs.cloudflare.com/ajax/libs/hadlebars.js/3.0.1/handlebars.js"></scrpit>
 
-<%@include file="include/header.jsp" %>
+<div id="displayDiv">
 
-<!-- Main content -->  
-<section class="content">
-	<div class="row">
-		<!-- left column -->
-		<div class="col-md-12">
-			<!-- general form elements -->
-			
-			<div class="box">
-				<div class="box-header with-border">
-					<h3 class="box-title">HOME PAGE33533</h3>
-				</div>
-			</div>
-			
-		</div><!--/.col (left) -->
-	</div><!-- /.row -->
-</section><!-- /.content -->
+</div>
 
-    
-<%@include file="include/footer.jsp" %>
- 
- 
+<script>
+	var source = "<h1><p>{{name}}</p> <p>{{userid}}</p> <p>{{addr}}</p></h1>"
+	var template = Handlebars.complie(source);
+	var data = {name:"홍길동", userid:"user00", addr:"조선 한양"};
+	
+	$("#displayDiv").html(template(date));
+</script>
+</body>
+</html>
