@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8"%>
    
 <!DOCTYPE html>
 <html>
@@ -29,6 +28,19 @@
   </head>
       <!-- jQuery 2.1.4 -->
     <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    
+	<script>
+	//not event f5  event.clientY < 0
+	//event.altKey When press Alt +F4 
+	//event.ctrlKey When press Ctrl +F4 
+	//event.clientY 107 or 129 is  Alt F4 postion on window screen it may change base on screen resolution 
+	 $(window).bind('beforeunload', function() {
+	    if ((event.clientY < 0) ||(event.altKey) ||(event.ctrlKey)||((event.clientY < 129) && (event.clientY>107))) {
+	    	self.location = "/user/logout";
+	   
+	        }
+	 }); 
+	</script>
     
   <body class="skin-blue sidebar-mini">
     <div class="wrapper">

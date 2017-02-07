@@ -19,5 +19,8 @@
 	
 	$("#displayDiv").html(template(date));
 </script>
+
+
+${result}
 </body>
 </html>

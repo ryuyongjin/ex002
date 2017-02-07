@@ -15,7 +15,7 @@
   
 	<select id="read" resultType="org.zerock.domain.BoardVO">
 		select 
-			bno, title, content, writer, regdate, viewcnt
+			bno, title, content, writer, regdate, viewcnt, replycnt
 			from tbl_board
 			where bno = #{bno}
 	</select>
@@ -55,7 +55,7 @@
   <select id="listCriteria" resultType="org.zerock.domain.BoardVO">
   <![CDATA[
   		select 
-  		bno, title, content, writer, regdate, viewcnt
+  		bno, title, content, writer, regdate, viewcnt, replycnt
 		from tbl_board
 		where bno > 0
 		order by bno desc, regdate desc
@@ -125,4 +125,30 @@
   <include refid="search"></include>
   </select>
   
+  <update id="updateReplyCnt">
+  	update tbl_board 
+  	set replycnt = replycnt + #{amount}
+  	where bno = #{bno}
+  </update>
+  
+  <update id="updateViewCnt">
+  	update tbl_board set viewcnt = viewcnt +1 where bno = #{bno}
+  </update>
+  
+  <insert id="addAttach">
+	 insert into tbl_attach(fullname, bno) values (#{fullName}, LAST_INSERT_ID())
+  </insert> 
+  
+  <select id="getAttach" resultType="String">
+  	select fullname from tbl_attach where bno = #{bno} order by regdate
+  </select>
+  
+ 	<delete id="deleteAttach">
+		delete from tbl_attach where bno = #{bno}
+	</delete>
+	
+	<insert id="replaceAttach">
+		insert into tbl_attach(fullname, bno) values (#{fullName}, #{bno})
+	</insert>
+
   </mapper>
